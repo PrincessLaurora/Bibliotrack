@@ -27,24 +27,26 @@ class UsersController < ApplicationController
     end
   end
 
-  post 'login' do
+  post '/login' do
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect to '/'
-      end
+    end
    end
 
    get '/logout' do
      if logged_in?
        session.clear
-      redirect to "/login"
+      redirect to '/login'
       else
-        redirect to "/"
+        redirect to '/'
       end
     end
 
-    get '/users/:slug'
-      @user = @user = User.find_by_slug(params[:slug])
+    get '/users/:slug' do
+      @user = User.find_by_slug(params[:slug])
       erb :'users/show'
     end
+
+end
