@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+
   get '/signup' do
     if !logged_in?
       erb :'users/create_user'
@@ -45,8 +46,11 @@ class UsersController < ApplicationController
     end
 
     get '/users/:slug' do
+      if logged_in?
+      @books = Book.all
       @user = User.find_by_slug(params[:slug])
       erb :'users/show'
+      end
     end
 
 end

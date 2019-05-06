@@ -1,6 +1,11 @@
+<% if logged_in? %>
+
 <h3>Hello, <%=current_user.username%></h3>
 
-<p>Your Library:</p>
-<%@user.books.each do |book|%>
-    <li><%= book.author %> - <%= book.title %></li>
-<% end %>
+
+  <p>Your Library:</p>
+  <% @books.each do |book| %>
+      <li><%= book.author %> - <%= book.title %></li>
+  <% end %>
+
+<%end%>
