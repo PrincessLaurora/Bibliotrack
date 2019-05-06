@@ -1,3 +1,8 @@
 <h3><%=@book.author%> - <%=@book.title%></h3>
 
+<form method="post" action="/books/<%=@book.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Tweet">
+</form>
+
 <a class="button" href="/books/<%= @book.id %>/edit">Edit</a>
