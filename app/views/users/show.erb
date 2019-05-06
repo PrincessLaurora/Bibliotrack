@@ -4,7 +4,7 @@
 
 
   <p>Your Library:</p>
-  <% @books.each do |book| %>
+  <% @user.books.each do |book| %>
       <li><a href="/books/<%=book.id%>"><%= book.author %> - <%= book.title %></a></li>
   <% end %>
 

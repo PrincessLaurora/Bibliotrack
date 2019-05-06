@@ -13,7 +13,7 @@ class BooksController < ApplicationController
         if params[:author] == "" || params[:title] == ""
           redirect to '/books/new'
         else
-          @book = Book.create(:author => params[:author], :title => params[:title])
+          @book = current_user.books.create(:author => params[:author], :title => params[:title])
             if @book.save
           redirect to "/books/#{@book.id}"
           else redirect to "/"
@@ -24,44 +24,48 @@ class BooksController < ApplicationController
       end
     end
 
-    get '/books/:id' do
-     if logged_in?
-       @book = Book.find_by(id: params[:id])
-       erb :'books/show'
-     else
-       redirect to "/login"
-     end
+  get '/books/:id' do
+   if logged_in?
+     @book = Book.find_by(id: params[:id])
+     erb :'books/show'
+   else
+     redirect to "/login"
    end
+ end
 
-    get '/books/:id/edit' do
-      if logged_in?
-        if @book = current_user.books.find_by(id: params[:id])
-          erb :'books/edit'
-        else
-          redirect to "/"
-        end
+ get '/books/:id/edit' do
+    if logged_in?
+      @book = Book.find_by(id: params[:id])
+      if @book && @book.user == current_user
+        erb :'books/edit'
       else
-        redirect to "/login"
+        redirect to '/'
       end
+    else
+      redirect to '/login'
     end
+  end
 
-    patch '/books/:id' do
-      if logged_in?
+  patch '/books/:id' do
+    if logged_in?
+      if params[:author] == "" || params[:title] == ""
+        redirect to "/books/#{@book.id}/edit"
+      else
         @book = Book.find_by(id: params[:id])
-        if params[:author] == "" || params[:title] == ""
-          redirect to ('/books/#{@book.id}/edit')
-        else
-          if @book = current_user.books.find_by(id: params[:id])
-            @book.update(:author => params[:author], :title => params[:title])
-              redirect to ('/books/#{@book.id}')
+          if @book && @book.user == current_user
+            if @book.update(:author => params[:author], :title => params[:title])
+              redirect to "/books/#{@book.id}"
+            else
+              redirect to "/books/#{@book.id}/edit"
+            end
           else
-            redirect to "/"
+            redirect to '/'
           end
         end
-      else
-        redirect to "/login"
-      end
+    else
+      redirect to '/login'
     end
- 
+  end
+
 
 end
