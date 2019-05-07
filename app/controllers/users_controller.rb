@@ -49,9 +49,11 @@ class UsersController < ApplicationController
 
     get '/users/:slug' do
       if logged_in?
-      books = Book.order(:author)
-      @user = User.find_by_slug(params[:slug])
-      erb :'users/show'
+        @user = User.find_by_slug(params[:slug])
+        @user_books = @user.books.order(:author)
+        if @user == current_user
+          erb :'users/show'
+        end
       end
     end
 
