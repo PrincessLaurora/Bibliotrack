@@ -2,10 +2,16 @@
 <h3>Hello, <%=current_user.username%></h3>
 
 
-  <p>Your Library:</p>
+  <h2>Your Library:</h2>
   <% @user_books.each do |book| %>
-      <li><a href="/books/<%=book.id%>"><%= book.author %> - <%= book.title %></a></li>
-  <% end %><br><br>
+      <li><a href="/books/<%=book.id%>">
+      <%if !book.receiver.empty?%>
+      <%= book.author %> - <%= book.title %> - I have lent this book to <%=book.receiver%> on <%=book.date%>
+      <%else%>
+      <%= book.author %> - <%= book.title %>  </a></li>
+      <%end%>
+      <%end%><br><br>
+
 
 
   <a class="button" href="/">Home</a>
