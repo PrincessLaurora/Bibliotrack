@@ -1,4 +1,13 @@
+<%if !@book.receiver.empty?%>
 <h3><%=@book.author%> - <%=@book.title%></h3>
+<h4>I have lent this book to <%=@book.receiver%> on <%=@book.date%>
+<%else%>
+<h3><%=@book.author%> - <%=@book.title%></h3>
+<%end%><br><br><br>
+
+
+
+
 
 <a class="button" href="/books/<%= @book.id %>/edit">Edit</a><br><br>
 
