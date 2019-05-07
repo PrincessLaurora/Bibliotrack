@@ -73,7 +73,7 @@ class BooksController < ApplicationController
       if @book && @book.user == current_user
       @book.delete
       end
-      redirect to "/users/:slug"
+      redirect to "/users/#{current_user.slug}"
     else
       redirect to '/login'
     end

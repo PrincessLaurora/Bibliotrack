@@ -33,6 +33,8 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect to '/'
+    else
+      redirect to '/login'
     end
    end
 
@@ -47,7 +49,7 @@ class UsersController < ApplicationController
 
     get '/users/:slug' do
       if logged_in?
-      @books = Book.order(:author)
+      books = Book.order(:author)
       @user = User.find_by_slug(params[:slug])
       erb :'users/show'
       end

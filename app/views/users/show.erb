@@ -5,4 +5,7 @@
   <p>Your Library:</p>
   <% @user.books.each do |book| %>
       <li><a href="/books/<%=book.id%>"><%= book.author %> - <%= book.title %></a></li>
-  <% end %>
+  <% end %><br><br>
+
+
+  <a class="button" href="/">Home</a>
