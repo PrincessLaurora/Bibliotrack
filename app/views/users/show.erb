@@ -1,17 +1,21 @@
 
-<h3>Hello, <%=current_user.username%></h3>
+<h2>Hello, <%=current_user.username%></h2>
 
 
-  <h2>Your Library:</h2>
+  <h3>Your Library:</h3>
   <% @user_books.each do |book| %>
-      <li><a href="/books/<%=book.id%>">
-      <%if !book.receiver.empty?%>
-      <%= book.author %> - <%= book.title %> - I have lent this book to <%=book.receiver%> on <%=book.date%>
-      <%else%>
-      <%= book.author %> - <%= book.title %>  </a></li>
-      <%end%>
-      <%end%><br><br>
+    <li><a href="/books/<%=book.id%>"><%= book.author %> - <%= book.title %></a></li>
+  <%end%><br><br>
+
+
+  <h3>List of books I lent:</h3>
+  <% @user_books.each do |book| %>
+  <a href="/books/<%=book.id%>">
+    <%if !book.receiver.empty?%>
+    <li><%= book.author %> - <%= book.title %> (I have lent this book to <%=book.receiver%> on <%=book.date%>)</a></li>
+    <%end%>
+   <%end%><br><br><br>
 
 
 
-  <a class="button" href="/">Home</a>
+  <h2><a class="button" href="/">Home</a><h2>
