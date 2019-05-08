@@ -53,7 +53,7 @@ class BooksController < ApplicationController
       else
         @book = Book.find_by(id: params[:id])
           if @book && @book.user == current_user
-            if @book.update(:author => params[:author], :title => params[:title])
+            if @book.update(:author => params[:author], :title => params[:title], :receiver => params[:receiver], :date => params[:date])
               redirect to "/books/#{@book.id}"
             else
               redirect to "/books/#{@book.id}/edit"
