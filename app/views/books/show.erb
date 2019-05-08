@@ -8,12 +8,13 @@
 
 
 
-<a class="button" href="/books/<%= @book.id %>/edit">Edit</a><br><br>
+<h3><a class="button" href="/books/<%= @book.id %>/edit">Edit</a><br></h3>
 
 <form method="post" action="/books/<%=@book.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Book">
 </form><br>
 
-<a href="/books/new">Add another book</a><br><br>
-<a class="button" href="/">Home</a>
+<h3><a href="/books/new">Add another book</a><br></h3>
+<h3><a href="/users/<%=current_user.slug%>">Visit your library</a><br></h3>
+<h3><a class="button" href="/">Home</a></h3>
