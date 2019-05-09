@@ -1,16 +1,50 @@
 
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Bibliotrack</title>
-</head>
-<body>
-<div class="container">
-  <h1>Bibliotrack</h1>
-  <h2>Build your Library!</h2><br>
+  <title>Bibliotrack</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
 
-    <%= yield %>
+  <body>
+  <div class="container">
+    <div class="container bg-info text-white">
+    <h1>Bibliotrack</h1>
+    <h2>Build your Library!</h2>
+    </div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <% if logged_in? %>
 
-</div>
-</body>
-</html>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/<%=current_user.slug%>">Visit your Library</a>
+      <li class="nav-item">
+        <a class="nav-link" href="/books/new">Add a book</a>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Log Out</a>
+      <%end%>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="col bg-warning text-white"><br>
+
+      <%= yield %>
+
+  </div>
+  </div>
+  </body>
+  </html>
