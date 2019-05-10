@@ -3,7 +3,7 @@
 
 <div class="row">
 
-<div class="col-sm-8">
+<div class="col-sm-4 p-3 m-3 bg-light text-dark">
 
   <h3>Your Library:</h3>
   <% @user_books.each do |book| %>
@@ -11,13 +11,13 @@
   <%end%><br><br>
   </div>
 
-<div class="col-sm-4">
+<div class="col-sm-7 p-3 m-3 bg-light text-dark">
 
   <h3>List of books I lent:</h3>
   <% @user_books.each do |book| %>
   <a href="/books/<%=book.id%>">
     <%if !book.receiver.empty?%>
-    <li><%= book.author %> - <%= book.title %> (I have lent this book to <%=book.receiver%> on <%=book.date%>)</a></li>
+    <li><%= book.author %> - <%= book.title %> <p class= "bg-danger text-white">I have lent this book to <%=book.receiver%> on <%=book.date%></p></a></li>
     <%end%>
    <%end%><br><br><br>
    </div>
