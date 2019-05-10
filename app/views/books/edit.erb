@@ -3,14 +3,14 @@
 
 <form action="/books/<%=@book.id%>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
-  <label> Author: </label>
-  <input type="text" name="author" value="<%=@book.author%>"> </br><br>
-  <label> Title: </label>
-  <input type="text" name="title" value="<%=@book.title%>"></br><br>
-  <label>I have lent this book to:</label>
-  <input type="text" name="receiver" value="<%=@book.receiver%>"><br><br>
-  <label>When?</label>
-  <input type="text" name="date" value="<%=@book.date%>">
+  <p><label class="font-weight-light mb-2 mr-sm-2">Author:</label><br>
+  <input type="text" name="author" value="<%=@book.author%>"</p>
+  <p><label class="font-weight-light mb-2 mr-sm-2">Title:</label><br>
+  <input type="text" name="title" value="<%=@book.title%>"> </p>
 
-  <input type="submit" value="submit">
+  <p><label class="font-weight-light mb-2 mr-sm-2">I have lent this book to:</label><br>
+  <input type="text" name="receiver" value="<%=@book.receiver%>"></p>
+  <p><label class="font-weight-light mb-2 mr-sm-2" value="<%=@book.date%>">When?</label><br>
+    <input type="text" name="date"></p><br>
+  <button type="submit" class="btn btn-primary mb-2">Edit</button>
 </form>
