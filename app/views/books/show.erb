@@ -1,20 +1,20 @@
 
 <%if !@book.receiver.empty?%>
-<h3><%=@book.author%> - <%=@book.title%></h3>
-<h4>I have lent this book to <%=@book.receiver%> on <%=@book.date%>
+<h3><span class="font-weight-bolder"><%= @book.author %></span> - <span class="font-weight-normal"><%= @book.title %></span><h3>
+<p class="bg-danger text-white">I have lent this book to <%=@book.receiver%> on <%=@book.date%></p>
 <%else%>
 <h3><%=@book.author%> - <%=@book.title%></h3>
 <%end%><br><br><br>
 
 
-
-<h3><a class="button" href="/books/<%= @book.id %>/edit">Edit</a><br></h3>
+<a href="/books/<%= @book.id %>/edit" class="btn btn-info" role="button">Edit</a><br><br>
 
 <form method="post" action="/books/<%=@book.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Book">
-</form>
+  <input type="submit" class="btn btn-info" value="Delete Book">
+</form><br>
 
-<h3><a href="/books/new">Add another book</a><br></h3>
-<h3><a href="/users/<%=current_user.slug%>">Visit your library</a><br></h3>
-<h3><a class="button" href="/">Home</a></h3>
+<a href="/books/new" class="btn btn-info" role="button">Add another book</a><br><br>
+<a href="/users/<%=current_user.slug%>" class="btn btn-info" role="button">Visit your library</a><br><br>
+<a href="/" class="btn btn-info" role="button">Home</a>
+  

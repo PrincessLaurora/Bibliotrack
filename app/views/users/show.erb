@@ -17,7 +17,7 @@
   <% @user_books.each do |book| %>
   <a href="/books/<%=book.id%>">
     <%if !book.receiver.empty?%>
-    <li><span class="font-weight-bold"><%= book.author %></span> - <span class="font-weight-light"><%= book.title %></span> <p class= "bg-danger text-white font-weight-bolder">I have lent this book to <%=book.receiver%> on <%=book.date%></p></li></a>
+    <li><span class="font-weight-bold"><%= book.author %></span> - <span class="font-weight-light"><%= book.title %></span> <p class= "bg-danger text-white">I have lent this book to <%=book.receiver%> on <%=book.date%></p></li></a>
     <%end%>
    <%end%><br><br><br>
    </div>
