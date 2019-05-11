@@ -3,21 +3,21 @@
 
 <div class="row">
 
-<div class="col-sm-4 p-3 m-3 bg-light text-dark">
+<div class="col-sm-5 p-3 m-3 bg-light text-dark">
 
   <h3>Your Library:</h3>
   <% @user_books.each do |book| %>
-    <li><a href="/books/<%=book.id%>"><%= book.author %> - <%= book.title %></a></li>
+    <a href="/books/<%=book.id%>"><li class="font-weight-bold"><%= book.author %></li><p class="font-weight-light"><%= book.title %></p></a>
   <%end%><br><br>
   </div>
 
-<div class="col-sm-7 p-3 m-3 bg-light text-dark">
+<div class="col-sm-6 p-3 m-3 bg-light text-dark">
 
   <h3>List of books I lent:</h3>
   <% @user_books.each do |book| %>
   <a href="/books/<%=book.id%>">
     <%if !book.receiver.empty?%>
-    <li><%= book.author %> - <%= book.title %> <p class= "bg-danger text-white">I have lent this book to <%=book.receiver%> on <%=book.date%></p></a></li>
+    <li><span class="font-weight-bold"><%= book.author %></span> - <span class="font-weight-light"><%= book.title %></span> <p class= "bg-danger text-white font-weight-bolder">I have lent this book to <%=book.receiver%> on <%=book.date%></p></li></a>
     <%end%>
    <%end%><br><br><br>
    </div>
