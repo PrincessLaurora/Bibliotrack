@@ -8,14 +8,16 @@ Clone the repository onto your machine from the following link: https://github.c
 
 You can also doing directly from your ruby terminal by typing: git clone git@github.com:PrincessLaurora/Bibliotrack.git
 
-CD into the folder: cd Bibliotrack/, run rake db:migrate and then run shotgun.
+CD into the folder: cd Bibliotrack/, type bundle install and then run shotgun.
+
+Copy the url and paste it in your broswer to access the app.
 
 Enjoy!
 
 ## Usage
 
 Manage your library by creating an account and start adding, editing and removing books at your leisure.
-If you have lent some books, you can track who borrowed your book and when. 
+If you have lent some books, you can track who borrowed your book and when.
 
 ## Contributing
 
